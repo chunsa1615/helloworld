@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	<!--bootstrap & jQuery-->
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" />
+		<!--Jvascript min-->
+		<script src="http://code.jquery.com/jquery.min.js"></script>
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!--//bootstrap & jQuery-->
+	<!--jQuery plugins-->
+		<!--sweetalert plugin-->
+		<link rel="stylesheet" href="plugins/sweetalert/sweetalert.css">
+		<script src="plugins/sweetalert/sweetalert.min.js"></script>
+		<!--//sweetalert plugin-->
+	<!--//jQuery plugins-->
+
+
+		<style type="text/css">
+			.imgpoint{
+				width: 60%;
+				height: 60%;
+				margin-top: 10%;
+			}
+		</style>
+
+
+
+		<script type="text/javascript">
+			$(function(){
+
+				$("#sweet1").click(function(){
+					//시본 사용 방법 --> 메시지의 제목만 지정
+					swal("hello Yeeeeeeeeep");
+				});
+				$("#sweet2").click(function(){
+					//제목과 내용 함께 지정
+					swal("이곳은 2의 제목이다", "이곳은 2의 내용이다.")
+				});
+				$("#sweet3").click(function(){
+					//제목, 내용, 메시지 종류 지정하기
+					//종류:'error', 'warning', 'info', 'success', 'prompt'
+					swal("hello", "hello jQuery Programming", "success");
+				});
+				$("#sweet4").click(function(){
+					//옵션 상세지정
+					swal({
+						title: "탈퇴확인",
+						text: "정말 삭제하시겠습니까?",
+						type: "warning",
+						showCancelButton: true,
+						confirmButtonClass: "btn-danger",
+						confirmButtonText: "예. 탈퇴합니다.",
+						cancelButtonClass: "btn-warning",
+						cancelButtonText: "아니오",
+						//확인, 취소 버튼을 누른 경우 창을 닫지 않음
+						closeOnConfirm: false,
+						closeOnCancel: false,
+					}, function(isConfirm){
+						// 눌럿을때 동작할 기능
+						if(isConfirm){
+							//확인버튼을 누른 경우
+							swal("Deleted!", "Your imaginary file has been deleted.", "success");
+						} else {
+							//취소버튼을 누른 경우
+							swal("Cancelled!", "Your imaginary file is safe :)", "error");
+						}
+					});
+				});
+				$("#sweet5").click(function(){
+					swal({
+						title: "성공",
+						text: "축하합니다. 어피치십니다.",
+						imageUrl: 'img/3.gif',
+					});
+				});
+				$("#sweet6").click(function(){
+					swal({
+						title: "질문",
+						text: "100 + 200 = ?",
+						type: "prompt",		//다이얼로그 종류(입력창이생긴다.)
+						showCancelButton: true,
+						closeOnConfirm: false,
+						inputPlaceholder: "숫자만 입력하라.",
+					}, function(inputValue){
+						// 이퀄즈가 3개다 ("===")
+						// 데이터 타입까지 완벽한 비교를 원하면 이퀄즈를 3개를 사용한다.
+						// 캔슬을 누른경우
+						if(inputValue === false){
+							return false;
+						}
+						//입력값이 없는경우
+						if(inputValue == ""){
+							swal.showInputError("답을 입력하세요.");
+							return false;
+						}
+
+						if(parseInt(inputValue) != 300){
+							swal.showInputError("틀렸다.");
+							return false;
+						}
+
+						swal({
+						title: "성공",
+						text: "축하합니다. 어피치십니다.",
+						imageUrl: 'img/3.gif',
+						});
+
+					});
+				});
+
+				$("#sweet7").click(function(){
+					swal({
+						title: "탈퇴확인",
+						text: "정말 탈퇴하겠나?\n모든 정보가 삭제된다.",
+						type: "warning",
+						showCancelButton: true,
+						closeOnConfirm: false,
+						// function()이 실행되는 동안 로딩표시
+						showLoaderOnConfirm: true,
+					}, function(){
+						//여기서는 2초간 딜레이
+						//실제로는 Ajax등의 통신 기능이 구현된다.
+						setTimeout(function(){
+							swal("탈퇴되었습니다.");
+						},2000);
+
+					});
+				});
+				
+
+			});
+		</script>
+
+	</head>
+	<body>
+		
+		<div class="contaier">
+			<h1 class="page-header">Sweet Alert Example</h1>
+
+			<button id="sweet1" class="btn btn-primary">sweet1</button>
+			<button id="sweet2" class="btn btn-primary">sweet2</button>
+			<button id="sweet3" class="btn btn-primary">sweet3</button>
+			<button id="sweet4" class="btn btn-primary">sweet4</button>
+			<button id="sweet5" class="btn btn-primary">어피치나와라</button>
+			<button id="sweet6" class="btn btn-primary">sweet6</button>
+			<button id="sweet7" class="btn btn-primary">sweet7</button>
+
+			<div class="contaier text-center">
+				<img src="img/11.gif" class ="imgpoint" >
+				<img src="img/22.gif" class ="imgpoint" >
+				<img src="img/33.gif" class ="imgpoint" >
+				<img src="img/44.gif" class ="imgpoint" >
+				<img src="img/55.gif" class ="imgpoint" >
+			</div>
+		</div>
+	</body>
+</html>
